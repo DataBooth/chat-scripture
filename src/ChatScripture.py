@@ -2,6 +2,9 @@ import streamlit as st
 
 from st_helper import read_app_config, read_render_markdown_file
 
+from chatdocs.chains import get_retrieval_qa
+
+
 # from st_sidebar import create_sidebar
 # from data_source import load_data
 
@@ -47,3 +50,11 @@ create_app_header(APP_TITLE, SUB_TITLE)
 read_render_markdown_file("docs/app_main.md")
 
 # create_sidebar()
+
+query_text = st.text_input(label="Enter your query here:")
+
+
+def run_query_chatdocs(query_text, config):
+    qa = get_retrieval_qa(config, callback=None)
+    res = qa(query_text)
+    return res["result"] if config["llm"] != "ctransformers" else None

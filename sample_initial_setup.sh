@@ -1,5 +1,5 @@
-pdm add streamlit watchdog
-pdm add pandas
+pdm add streamlit watchdog meaningless
+# pdm add pandas
 pdm add --dev notebook
 
 pdm export --o requirements.txt --without-hashes --prod
