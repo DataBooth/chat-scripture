@@ -1,11 +1,13 @@
 import streamlit as st
 
 from st_helper import read_app_config, read_render_markdown_file
-from st_sidebar import create_sidebar
-from data_source import load_data
 
-APP_TITLE = "App Title: TODO"
-SUB_TITLE = "Sub-Title: TODO"
+# from st_sidebar import create_sidebar
+# from data_source import load_data
+
+
+APP_TITLE = "Chat Scripture"
+SUB_TITLE = "Asking questions of scripture using chatdocs"
 APP_ICON = "💿"
 APP_LAYOUT = "wide"
 APP_SIDEBAR_INITIAL = "expanded"
@@ -37,11 +39,11 @@ def create_app_header(app_title, subtitle=None):
 # app_config = read_app_config()
 
 # Get data
-
-df = load_data()
+# df = load_data()
 
 # Create UI
 
 create_app_header(APP_TITLE, SUB_TITLE)
 read_render_markdown_file("docs/app_main.md")
-create_sidebar()
+
+# create_sidebar()

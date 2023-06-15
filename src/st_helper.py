@@ -1,6 +1,11 @@
 from pathlib import Path
 
-from tomllib import load
+try:
+    import tomllib  # works if using Python 3.11+
+except ModuleNotFoundError:
+    import tomli as tomllib  # else use tomli package (needs pip install tomli)
+
+
 from streamlit import cache_data, markdown
 
 APP_CONFIG = "./src/app_config.toml"
@@ -27,6 +32,6 @@ def read_render_markdown_file(markdown_file):
 def read_app_config(toml_file=APP_CONFIG):
     if Path(toml_file).exists():
         with open(toml_file, "rb") as f:
-            return load(f)
+            return tomllib.load(f)
     else:
         raise FileNotFoundError
